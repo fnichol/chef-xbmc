@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: xbmc
-# Recipe:: default
+# Recipe:: apt_repository
 #
 # Copyright 2010, Fletcher Nichol
 #
@@ -15,6 +15,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-include_recipe "xbmc:apt_repository"
+include_recipe "apt"
+
+%w{python-software-properties pkg-config}.each |pkg|
+  package pkg
+end
+
+bash "add-xbmc-apt-repository" do
+  user "root"
+  code %{add-apt-repository ppa:team-xbmc-svn/ppa}
+  notifies :run, resources(:execute => "apt-get update"), :immediately
+  creates "/etc/apt/sources.list.d/team-xbmc-svn-ppa-#{node[:lsb][:codename]}.list"
+end
