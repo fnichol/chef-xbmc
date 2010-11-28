@@ -15,3 +15,4 @@
     add-apt-repository ppa:team-xbmc-svn/ppa
     apt-get update
     apt-get install nvidia-current nvidia-settings mesa-utils libvdpau-dev
+
