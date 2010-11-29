@@ -18,7 +18,7 @@
 
 include_recipe "apt"
 
-%w{python-software-properties pkg-config}.each |pkg|
+%w{python-software-properties pkg-config}.each do |pkg|
   package pkg
 end
 
