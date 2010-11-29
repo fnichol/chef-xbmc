@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: xbmc
-# Recipe:: core
+# Recipe:: live
 #
 # Copyright 2010, Fletcher Nichol
 #
@@ -17,8 +17,21 @@
 # limitations under the License.
 
 include_recipe "xbmc::apt_repository"
+include_recipe "xbmc::core"
 
-%w{xbmc xinit x11-xserver-utils}.each do |pkg|
+user "xbmc" do
+  comment "XBMC User"
+end
+
+# add xbmc user to required groups
+%w{audio video fuse cdrom plugdev}.each do |grp|
+  group grp do
+    append true
+    members ["xbmc"]
+  end
+end
+
+%w{xbmc-live}.each do |pkg|
   package pkg
 end
 
