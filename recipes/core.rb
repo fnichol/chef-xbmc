@@ -18,7 +18,8 @@
 
 include_recipe "xbmc::apt_repository"
 
-%w{xbmc xinit x11-xserver-utils}.each do |pkg|
+%w{xbmc xinit x11-xserver-utils linux-sound-base alsa-base 
+    alsa-utils}.each do |pkg|
   package pkg
 end
 
