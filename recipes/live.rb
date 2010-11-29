@@ -20,11 +20,18 @@ include_recipe "users::sysadmins"
 include_recipe "xbmc::apt_repository"
 include_recipe "xbmc::core"
 
+home_dir = "home/xbmc"
+
 user "xbmc" do
   comment   "XBMC User"
   shell     "/bin/bash"
   supports  :manage_home => true
-  home      "/home/xbmc"
+  home      home_dir
+end
+
+directory "#{home_dir}" do
+  owner "xbmc"
+  mode  "2755"
 end
 
 # add xbmc user to required groups
