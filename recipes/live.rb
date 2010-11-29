@@ -43,7 +43,8 @@ end
   end
 end
 
-%w{xbmc-live}.each do |pkg|
+%w{xbmc-live policykit-1 upower}.each do |pkg|
   package pkg
 end
 
+cookbook_file "/var/lib/polkit-1/localauthority/50-local.d/custom-actions.pkla"
