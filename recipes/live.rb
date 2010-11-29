@@ -20,7 +20,7 @@ include_recipe "users::sysadmins"
 include_recipe "xbmc::apt_repository"
 include_recipe "xbmc::core"
 
-home_dir = "home/xbmc"
+home_dir = "/home/xbmc"
 
 user "xbmc" do
   comment   "XBMC User"
