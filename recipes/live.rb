@@ -21,8 +21,10 @@ include_recipe "xbmc::apt_repository"
 include_recipe "xbmc::core"
 
 user "xbmc" do
-  comment "XBMC User"
-  shell   "/bin/bash"
+  comment   "XBMC User"
+  shell     "/bin/bash"
+  supports  :manage_home => true
+  home      "/home/xbmc"
 end
 
 # add xbmc user to required groups
