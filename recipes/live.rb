@@ -31,6 +31,7 @@ end
 
 directory "#{home_dir}" do
   owner "xbmc"
+  group "xbmc"
   mode  "2755"
 end
 
