@@ -43,6 +43,14 @@ end
   end
 end
 
+node[:authorization][:sudo][:extensions] << <<-SUDO.gsub(/^ {2}/, '')
+  ### XBMC-specific configuration ###
+  # XBMC
+  Cmnd_Alias SHUTDOWN_CMDS = /sbin/shutdown, /sbin/reboot, /sbin/halt # XBMC
+  Cmnd_Alias MOUNT_CMDS = /bin/mount, /bin/umount # XBMC
+  xbmc ALL=NOPASSWD: SHUTDOWN_CMDS, MOUNT_CMDS # XBMC
+SUDO
+
 %w{xbmc-live policykit-1 upower}.each do |pkg|
   package pkg
 end

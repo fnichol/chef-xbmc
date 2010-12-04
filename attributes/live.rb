@@ -17,11 +17,3 @@
 # limitations under the License.
 #
 
-default[:authorization][:sudo][:extensions] << <<-SUDO
-### XBMC-specific configuration ###
-# XBMC
-Cmnd_Alias SHUTDOWN_CMDS = /sbin/shutdown, /sbin/reboot, /sbin/halt # XBMC
-Cmnd_Alias MOUNT_CMDS = /bin/mount, /bin/umount # XBMC
-xbmc ALL=NOPASSWD: SHUTDOWN_CMDS, MOUNT_CMDS # XBMC
-SUDO
-
